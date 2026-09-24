@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Значок вкладки: белая буква V на Dodger Blue. Форма нарисована контурами и не зависит от шрифтов.
-     Цвет фона можно изменить в fill="#1E90FF", например на #1266B5. Размер viewBox сохраняйте 64 × 64. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="17" fill="#1E90FF"/>
-  <path d="M16 18h10l8 25 9-25h9L37 49H27Z" fill="#fff"/>
-  <circle cx="49" cy="12" r="4" fill="#d5edff"/>
-</svg>
