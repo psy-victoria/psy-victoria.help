@@ -8,6 +8,11 @@
 
 /* 01. Настройки и элементы страницы. Изменяя селектор, меняйте и соответствующий id/class в HTML. */
 const storageKey = "psy-victoria-language"; // Ключ сохранённого языка; пример: "psy-language-v2" создаст новый ключ.
+const storageChoiceKey = "psy-victoria-storage-choice-v1"; // Решение о сохранении языка.
+const storageBanner = document.querySelector("#storage-banner");
+function storageAllowed() {
+  try { return localStorage.getItem(storageChoiceKey) === "allowed"; } catch { return false; }
+}
 const defaultLanguage = "ru"; // Язык по умолчанию; пример: "en" сделает резервным английский.
 const languageButtons = document.querySelectorAll("[data-language]"); // Кнопки RU/EN; пример в HTML: data-language="en".
 const translatedElements = document.querySelectorAll("[data-ru][data-en]"); // Все текстовые элементы; пример: data-ru="Обо мне".
@@ -29,6 +34,7 @@ let currentImageLink = null; // Последняя открытая карточ
    Пример: ["en-US", "ru"] даст RU; ["en-GB"] даст EN; ["de"] даст RU.
 */
 function readLanguagePreference() {
+  if (!storageAllowed()) return null;
   try {
     return localStorage.getItem(storageKey);
   } catch {
@@ -77,7 +83,7 @@ function setLanguage(language, remember = false) {
   updateMenuLabel();
   if (imageDialog.open && currentImageLink) updateImageCaption(currentImageLink);
 
-  if (remember) {
+  if (remember && storageAllowed()) {
     try {
       localStorage.setItem(storageKey, selected);
     } catch {
@@ -158,5 +164,34 @@ imageDialog.addEventListener("close", () => {
 
 /* 05. Запуск. .js включается в самом конце: при ошибке загрузки обычные ссылки меню остаются доступными. */
 document.querySelector("#year").textContent = new Date().getFullYear(); // Автоматический год; пример: в 2027 появится 2027.
+/* Старая настройка языка не используется без разрешения. */
+try { if (!storageAllowed()) localStorage.removeItem(storageKey); } catch {}
 setLanguage(detectLanguage());
+let storageSettingsTrigger = null; // Кнопка, открывшая настройки, для возврата фокуса.
+function setStorageChoice(choice) {
+  try {
+    localStorage.setItem(storageChoiceKey, choice);
+    if (choice === "allowed") localStorage.setItem(storageKey, document.documentElement.lang);
+    else localStorage.removeItem(storageKey);
+  } catch { /* При запрете localStorage язык работает в текущей странице. */ }
+  storageBanner.hidden = true;
+  if (storageSettingsTrigger) storageSettingsTrigger.focus({ preventScroll: true });
+  else {
+    const main = document.querySelector("#main");
+    main?.setAttribute("tabindex", "-1");
+    main?.focus({ preventScroll: true });
+  }
+}
+document.querySelectorAll("[data-storage-choice]").forEach((button) => {
+  button.addEventListener("click", () => setStorageChoice(button.dataset.storageChoice));
+});
+document.querySelectorAll("[data-storage-settings]").forEach((button) => {
+  button.addEventListener("click", () => {
+    storageSettingsTrigger = button;
+    storageBanner.hidden = false;
+    storageBanner.querySelector("button")?.focus();
+  });
+});
+try { storageBanner.hidden = ["allowed", "denied"].includes(localStorage.getItem(storageChoiceKey)); }
+catch { storageBanner.hidden = false; }
 document.documentElement.classList.add("js");

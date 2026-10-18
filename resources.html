@@ -2,10 +2,12 @@
 <!-- Отдельная статическая страница: текст доступен без JavaScript.
 Меняйте data-ru, data-en и русский текст внутри тегов.
 Общие стили и поведение подключены из styles.css и script.js. -->
-<html lang="ru" data-title-ru="Чуть больше ясности | Виктория Миловская" data-title-en="A little more understanding | Viktoria Milovskaya">
+<html lang="ru" data-title-ru="Чуть больше ясности | Виктория Миловская" data-title-en="A little more understanding | Viktoriia Milovskaia">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#1E90FF">
     <title>Чуть больше ясности | Виктория Миловская</title>
@@ -15,10 +17,13 @@
     <meta property="og:title" content="Чуть больше ясности | Виктория Миловская">
     <meta property="og:description" content="Понятные материалы о психологической работе, повседневных трудностях и заботе о себе.">
     <meta property="og:url" content="https://psy-victoria.help/resources.html">
-    <meta property="og:image" content="https://psy-victoria.help/assets/viktoria.jpg">
+    <meta property="og:image" content="https://psy-victoria.help/assets/social-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="stylesheet" href="styles.css?v=5">
-    <script src="script.js?v=5" defer>
+    <link rel="stylesheet" href="styles.css?v=7">
+    <script src="script.js?v=6" defer>
     </script>
   </head>
   <body>
@@ -28,7 +33,7 @@
         <a class="brand" href="index.html">
           <span class="brand-initials" aria-hidden="true">ВМ</span>
           <span>
-            <strong  data-ru="Виктория Миловская" data-en="Viktoria Milovskaya">Виктория Миловская</strong>
+            <strong  data-ru="Виктория Миловская" data-en="Viktoriia Milovskaia">Виктория Миловская</strong>
             <small  data-ru="Психолог · ImTT · онлайн" data-en="Psychologist · ImTT · online">Психолог · ImTT · онлайн</small>
           </span>
         </a>
@@ -114,8 +119,8 @@
           </div>
           <section class="article-cta">
             <h2 data-ru="Хотите обсудить свою ситуацию?" data-en="Would you like to talk about your situation?">Хотите обсудить свою ситуацию?</h2>
-            <p data-ru="Напишите Виктории, чтобы задать вопрос или согласовать первую встречу." data-en="Write to Viktoria to ask a question or arrange a first session.">Напишите Виктории, чтобы задать вопрос или согласовать первую встречу.</p>
-            <a class="button primary" href="index.html#contact" data-ru="Связаться с Викторией →" data-en="Contact Viktoria →">Связаться с Викторией →</a>
+            <p data-ru="Напишите Виктории, чтобы задать вопрос или согласовать первую встречу." data-en="Write to Viktoriia to ask a question or arrange a first session.">Напишите Виктории, чтобы задать вопрос или согласовать первую встречу.</p>
+            <a class="button primary" href="index.html#contact" data-ru="Связаться с Викторией →" data-en="Contact Viktoriia →">Связаться с Викторией →</a>
           </section>
         </div>
       </div>
@@ -123,10 +128,16 @@
     <footer>
       <div class="container footer-inner">
         <div>
-          <strong  data-ru="Виктория Миловская" data-en="Viktoria Milovskaya">Виктория Миловская</strong>
+          <strong  data-ru="Виктория Миловская" data-en="Viktoriia Milovskaia">Виктория Миловская</strong>
           <p  data-ru="Индивидуальный предприниматель · ОГРНИП 320774600507867" data-en="Individual entrepreneur · Registration no. 320774600507867">Индивидуальный предприниматель · ОГРНИП 320774600507867</p>
           <p>© <span id="year">2026</span> psy-victoria.help</p>
         </div>
+<nav class="footer-policies" aria-label="Правовая информация" data-aria-ru="Правовая информация" data-aria-en="Policy information">
+<a href="privacy.html" data-ru="Политика конфиденциальности" data-en="Privacy policy">Политика конфиденциальности</a>
+<a href="cookies.html" data-ru="Cookies и настройки хранения" data-en="Cookies and storage settings">Cookies и настройки хранения</a>
+<a href="terms.html" data-ru="Условия использования" data-en="Terms of use">Условия использования</a>
+<button type="button" data-storage-settings data-ru="Настройки хранения" data-en="Storage settings">Настройки хранения</button>
+</nav>
         <a href="#top" class="text-link" data-ru="Наверх ↑" data-en="Back to top ↑">Наверх ↑</a>
       </div>
     </footer>
@@ -141,5 +152,9 @@
       </div>
       <a id="dialog-original" target="_blank" rel="noopener noreferrer" class="text-link" data-ru="Открыть изображение отдельно ↗" data-en="Open image in a separate tab ↗">Открыть изображение отдельно ↗</a>
     </dialog>
-  </body>
+  <!-- Только добровольное сохранение языка. Баннер не управляет аналитикой Cloudflare. -->
+<section id="storage-banner" class="storage-banner" aria-labelledby="storage-title" hidden>
+<div class="container storage-inner">
+<div><h2 id="storage-title" data-ru="Сохранить выбранный язык?" data-en="Remember your language?">Сохранить выбранный язык?</h2><p  data-ru="Это необязательно. Выбор хранится только в этом браузере. Подробнее - в правилах хранения." data-en="This is optional. The preference stays in this browser. See the storage policy for details.">Это необязательно. Выбор хранится только в этом браузере. Подробнее - в правилах хранения.</p></div><div class="storage-actions"><button type="button" class="button primary" data-storage-choice="allowed" data-ru="Разрешить" data-en="Allow">Разрешить</button><button type="button" class="button storage-decline" data-storage-choice="denied" data-ru="Не сохранять" data-en="Do not save">Не сохранять</button><a href="cookies.html" class="text-link" data-ru="Подробнее" data-en="Details">Подробнее</a></div></div></section>
+</body>
 </html>
